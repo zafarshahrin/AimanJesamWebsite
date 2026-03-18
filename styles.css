@@ -219,15 +219,18 @@ h6 {
 }
 
 .logo {
-    position: fixed;
+    position: absolute;
     top: 22px; /* Adjusted slightly to align nicely with smaller navbar */
     left: 3vw;
     font-weight: 800;
     font-size: 1.4rem; /* Kept readable */
     letter-spacing: -0.02em;
     font-family: var(--font-heading);
-    z-index: 1001;
+    z-index: 1005; /* High z-index to stay above other elements */
     color: var(--color-text);
+    /* Add text shadow so it remains legible when scrolling over dark background images */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.8);
+    transition: all var(--transition-fast);
 }
 
 .nav-links {
@@ -759,6 +762,14 @@ h6 {
 }
 
 @media (max-width: 768px) {
+    /* Responsive adjustment for the logo */
+    .logo {
+        font-size: 1rem;
+        top: 32px; /* Align vertically with the center of the mobile hamburger menu */
+        left: 4vw;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.9), 0 0 15px rgba(255, 255, 255, 0.9);
+    }
+
     /* Reset navbar container so it doesn't bound its children */
     .navbar, .navbar.scrolled {
         position: static; /* Let children escape fixed context */
