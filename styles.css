@@ -653,6 +653,7 @@ h6 {
 }
 
 .social-icon {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -670,6 +671,33 @@ h6 {
     color: white;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+}
+
+/* Tooltip for social icons */
+.social-icon::after {
+    content: attr(aria-label);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-text);
+    color: var(--color-bg, #fff);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, bottom 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.social-icon:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: -30px;
 }
 
 .footer-bottom {
