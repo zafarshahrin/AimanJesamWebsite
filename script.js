@@ -72,4 +72,60 @@ document.addEventListener('DOMContentLoaded', () => {
     // Select elements to animate
     const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale, .reveal-right');
     revealElements.forEach(el => observer.observe(el));
+    // Photo Auto Slider Logic with Controls
+    const sliderImages = document.querySelectorAll('.slider-image');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('slider-prev');
+    const nextBtn = document.getElementById('slider-next');
+    const pauseBtn = document.getElementById('slider-pause');
+
+    if (sliderImages.length > 0) {
+        let currentSlide = 0;
+        let slideInterval;
+        let isPaused = false;
+
+        const goToSlide = (index) => {
+            sliderImages[currentSlide].classList.remove('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+            
+            // Handle wrap around limits
+            if (index < 0) currentSlide = sliderImages.length - 1;
+            else if (index >= sliderImages.length) currentSlide = 0;
+            else currentSlide = index;
+
+            sliderImages[currentSlide].classList.add('active');
+            if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+        };
+
+        const startSlider = () => {
+            slideInterval = setInterval(() => {
+                if (!isPaused) goToSlide(currentSlide + 1);
+            }, 6000); // 6 seconds for each slide
+        };
+
+        const togglePause = () => {
+            isPaused = !isPaused;
+            if (isPaused) {
+                // Show play icon
+                pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+            } else {
+                // Show pause icon
+                pauseBtn.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+            }
+        };
+
+        // Initialize slider
+        startSlider();
+
+        // Event listeners for controls
+        if (nextBtn) nextBtn.addEventListener('click', () => { goToSlide(currentSlide + 1); });
+        if (prevBtn) prevBtn.addEventListener('click', () => { goToSlide(currentSlide - 1); });
+        if (pauseBtn) pauseBtn.addEventListener('click', togglePause);
+        
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                goToSlide(idx);
+            });
+        });
+    }
 });

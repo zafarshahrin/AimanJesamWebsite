@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body style="padding-top: 58px;">
     <!-- LOGO -->
     <a href="index.html" class="logo">YB EMPIRE</a>
 
@@ -31,19 +31,44 @@
         </nav>
     </header>
 
-    <!-- SECTION 1 – HERO -->
-    <section class="hero" id="hero">
+    <!-- SECTION 1 – PHOTO SLIDER -->
+    <section class="hero photo-slider" id="hero" style="min-height: 80vh;">
         <div class="hero-bg">
-            <img src="assets/images/hero.png" alt="Dynamic team meeting">
-            <div class="hero-overlay"></div>
+            <img src="assets/images/background1.jpg" class="slider-image active" alt="Slide 1">
+            <img src="assets/images/background2.jpg" class="slider-image" alt="Slide 2">
+            <img src="assets/images/background3.jpg" class="slider-image" alt="Slide 3">
         </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+            <div class="slider-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
+            <div class="slider-buttons">
+                <button id="slider-pause" aria-label="Pause">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+                <button id="slider-prev" aria-label="Previous">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button id="slider-next" aria-label="Next">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2 – HERO CONTENT -->
+    <section class="hero-text-section section-padding" style="background-color: var(--color-bg);">
         <div class="container hero-content">
-            <h1 class="reveal-up">Building Future <br><span class="text-accent">Sales Leaders</span></h1>
-            <p class="subheadline reveal-up delay-1">
+            <h1 class="reveal-up" style="font-size: clamp(3.5rem, 8vw, 6.5rem); margin-bottom: 1.5rem; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em;">Building Future <br><span class="text-accent">Sales Leaders</span></h1>
+            <p class="subheadline reveal-up delay-1" style="font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--color-text-muted); margin-bottom: 2.5rem; max-width: 700px; line-height: 1.4;">
                 A dynamic sales team focused on growth, leadership development, and creating opportunities within the Coway network.
             </p>
             <div class="hero-actions reveal-up delay-2">
-                <a href="about.html" class="btn btn-primary">Explore Our Team</a>
+                <a href="about.html" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Explore Our Team</a>
             </div>
         </div>
     </section>

@@ -2,9 +2,9 @@
    VARIABLES & RESET
    ========================================= */
 :root {
-    --color-bg: #111111;
-    --color-bg-light: #1a1a1a;
-    --color-bg-dark: #2a2a2a;
+    --color-bg: #000000;
+    --color-bg-light: #000000;
+    --color-bg-dark: #111111;
     --color-text: #ffffff;
     --color-text-muted: #a3a3a3;
     --color-text-white: #ffffff;
@@ -304,21 +304,6 @@ h6 {
     z-index: -1;
 }
 
-.hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.2;
-    /* Blend with background */
-    transform: scale(1.05);
-    transition: transform 10s ease-out;
-}
-
-/* Small zoom effect on load */
-.hero.loaded .hero-bg img {
-    transform: scale(1);
-}
-
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -392,12 +377,12 @@ h6 {
 }
 
 .service-card {
-    background: var(--color-bg);
+    background: #000000;
     padding: 3rem 2.5rem;
     border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid var(--color-accent);
     height: 100%;
 }
 
@@ -668,7 +653,7 @@ h6 {
     border-radius: 50%;
     background-color: var(--color-bg-light);
     color: var(--color-text);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(2, 34, 173);
     transition: all var(--transition-base);
 }
 
@@ -914,4 +899,96 @@ h6 {
     }
 
 
+}
+
+/* =========================================
+   PHOTO SLIDER & HERO CONTROLS
+   ========================================= */
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.slider-image.active {
+    opacity: 1;
+}
+
+/* Slider Controls */
+.slider-controls {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 5%;
+    z-index: 20;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .slider-controls {
+        flex-direction: column;
+        gap: 20px;
+        bottom: 20px;
+    }
+    .slider-buttons {
+        margin-left: 0 !important;
+    }
+    .slider-dots {
+        position: static !important;
+        transform: none !important;
+    }
+}
+
+.slider-dots {
+    display: flex;
+    gap: 12px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.dot.active {
+    background-color: #ffffff;
+    transform: scale(1.2);
+}
+
+.slider-buttons {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.slider-buttons button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111;
+    transition: all var(--transition-fast);
+}
+
+.slider-buttons button:hover {
+    background-color: #fff;
+    transform: scale(1.1);
 }
