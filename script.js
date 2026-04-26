@@ -129,3 +129,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Modal Functions
+window.openModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+        // Trigger reflow for transition
+        void modal.offsetWidth;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+window.closeModal = function(event, modalId) {
+    // If event is passed, check if clicking outside content or on close button
+    if (event) {
+        if (!event.target.classList.contains('modal-overlay') && !event.target.classList.contains('close-modal')) {
+            return; // Clicked inside content
+        }
+    }
+    
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 400); // match transition duration
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
