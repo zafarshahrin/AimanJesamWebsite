@@ -1676,6 +1676,11 @@ h6 {
     font-size: 1.05rem;
 }
 
+/* Default photo-slider height for desktop */
+.hero.photo-slider {
+    min-height: 80vh;
+}
+
 /* =========================================
    GLOBAL MOBILE RESPONSIVENESS FIXES
    ========================================= */
@@ -1702,9 +1707,4 @@ h6 {
         min-height: 40vh;
         height: 40vh;
     }
-}
-
-/* Default photo-slider height for desktop */
-.hero.photo-slider {
-    min-height: 80vh;
 }
