@@ -332,13 +332,13 @@ h6 {
     max-width: 900px;
 }
 
-.hero h1 {
+.hero-content h1 {
     font-size: clamp(3.5rem, 8vw, 6.5rem);
     margin-bottom: 1.5rem;
     color: var(--color-text);
 }
 
-.hero .subheadline {
+.hero-content .subheadline {
     font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     color: var(--color-text-muted);
     margin-bottom: 2.5rem;
@@ -1113,8 +1113,10 @@ h6 {
         z-index: 1003;
         width: 50px;
         height: 50px;
-        background-color: var(--color-bg-light);
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: rgba(17, 17, 17, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 50%;
         flex-direction: column;
         justify-content: center;
@@ -1152,7 +1154,7 @@ h6 {
         /* fully offscreen */
         width: 100vw;
         height: 100vh;
-        background-color: rgba(245, 244, 239, 0.98);
+        background-color: rgba(10, 10, 10, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         display: flex;
@@ -1183,7 +1185,7 @@ h6 {
         background-color: transparent;
     }
 
-    .hero h1 {
+    .hero-content h1 {
         font-size: 3rem;
     }
 
@@ -1412,10 +1414,18 @@ h6 {
 @media (max-width: 768px) {
     .modal-body {
         flex-direction: column;
+        flex-wrap: nowrap;
         gap: 1.5rem;
         max-height: 80vh;
         overflow-y: auto;
+        overflow-x: hidden;
         padding-right: 10px;
+    }
+
+    .modal-image, 
+    .modal-text {
+        flex: 1 1 auto;
+        width: 100%;
     }
 
     .close-modal {
@@ -1680,11 +1690,21 @@ h6 {
         font-size: 2.2rem;
     }
 
-    .hero .subheadline {
+    .hero-content .subheadline {
         font-size: 1.2rem;
     }
 
     .lead-text {
         font-size: 1.1rem;
     }
+
+    .hero.photo-slider {
+        min-height: 40vh;
+        height: 40vh;
+    }
+}
+
+/* Default photo-slider height for desktop */
+.hero.photo-slider {
+    min-height: 80vh;
 }
